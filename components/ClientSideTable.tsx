@@ -1,10 +1,14 @@
 'use client'
 import { useReactTable, getCoreRowModel, flexRender } from "@tanstack/react-table";
-import data from "../users.json";
 import React from "react";
 import { userColumnDefs } from "./UserColumnDefs";
 
-const ClientSideTable = () => {
+
+interface DataTableProps<TData> {
+  data: TData[];
+}
+
+export function ClientSideTable<TData>({data }: DataTableProps<TData>) {
   const table = useReactTable({
     columns: userColumnDefs,
     data: data ?? [],
@@ -44,10 +48,8 @@ const ClientSideTable = () => {
                 ))}
                 </tr>
             ))}
-            </tbody>
+        </tbody>
       </table>
     </div>
   );
 };
-
-export default ClientSideTable;

@@ -1,35 +1,35 @@
 //./components/UserColumnDefs.tsx
 import { createColumnHelper } from "@tanstack/react-table";
-import { Person } from "../types/Person";
+import { Persona } from "../types/Persona";
 
 // createColumnHelper helps us create columns with maximum type safety.
 // we assign the type person so that it knows the structure for our data
-const columnHelper = createColumnHelper<Person>();
+const columnHelper = createColumnHelper<Persona>();
 
 export const userColumnDefs = [
-  columnHelper.accessor((row) => row.first_name, {
-    id: "first_name",
+  columnHelper.accessor((row) => row.apellido, {
+    id: "apellido",
     cell: (info) => info.getValue(),
-    header: (info) => <span>First Name</span>,
+    header: (info) => <span>Apellido</span>,
   }),
-  columnHelper.accessor((row) => row.last_name, {
-    id: "last_name",
+  columnHelper.accessor((row) => row.nombre, {
+    id: "nombre",
     cell: (info) => <span>{info.getValue()}</span>,
-    header: () => <span>Last Name</span>,
+    header: () => <span>Nombre</span>,
   }),
-  columnHelper.accessor((row) => row.gender, {
+  columnHelper.accessor((row) => row.fecha_nacimiento, {
     id: "gender",
     cell: (info) => <span>{info.getValue()}</span>,
-    header: () => <span>Gender</span>,
+    header: () => <span>Fecha de Nacimiento</span>,
   }),
-  columnHelper.accessor((row) => row.email, {
-    id: "email",
-    cell: (info) => <span>{info.getValue()}</span>,
-    header: () => <span>Email</span>,
-  }),
-  columnHelper.accessor((row) => row.ip_address, {
-    id: "ip_address",
-    cell: (info) => <span>{info.getValue()}</span>,
-    header: () => <span>IP Address</span>,
-  }),
+  // columnHelper.accessor((row) => row.email, {
+  //   id: "email",
+  //   cell: (info) => <span>{info.getValue()}</span>,
+  //   header: () => <span>Email</span>,
+  // }),
+  // columnHelper.accessor((row) => row.ip_address, {
+  //   id: "ip_address",
+  //   cell: (info) => <span>{info.getValue()}</span>,
+  //   header: () => <span>IP Address</span>,
+  // }),
 ];

@@ -1,20 +1,13 @@
-//------PRUEBO SI DAISY NO ROMPE
-// export default function Home() {
-//   return (
-//     <>
-//       <button className="btn btn-primary">Hello daisyUI!</button>
-//     </>
-//   )
-// }
+'use client'
+import { ClientSideTable } from "@/components/ClientSideTable";
+import dataPersona from "@/utils/persona";
 
-
-import ClientSideTable from "../components/ClientSideTable";
-
-export default function page(){
+export default async function page(){
+  const personas = await dataPersona();
   return (
     <div className="container mx-auto">
       <h1 className="text-2xl">Personas con React Table</h1>
-      <ClientSideTable />
+      <ClientSideTable data={personas.personas}/>
     </div>
   );
 };
