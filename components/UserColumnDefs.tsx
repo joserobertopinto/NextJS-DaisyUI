@@ -22,14 +22,14 @@ export const userColumnDefs = [
     cell: (info) => <span>{info.getValue()}</span>,
     header: () => <span>Fecha de Nacimiento</span>,
   }),
-  // columnHelper.accessor((row) => row.email, {
-  //   id: "email",
-  //   cell: (info) => <span>{info.getValue()}</span>,
-  //   header: () => <span>Email</span>,
-  // }),
-  // columnHelper.accessor((row) => row.ip_address, {
-  //   id: "ip_address",
-  //   cell: (info) => <span>{info.getValue()}</span>,
-  //   header: () => <span>IP Address</span>,
-  // }),
+  columnHelper.accessor((row) => row.nro_documento, {
+    id: "email",
+    cell: (info) => <span>{info.getValue()}</span>,
+    header: () => <span>Documento</span>,
+  }),
+  columnHelper.accessor((row) => row.sexo, {
+    id: "ip_address",
+    cell: (info) => <span>{info.getValue()}</span>,
+    header: () => <span>Sexo</span>,
+  }),
 ];

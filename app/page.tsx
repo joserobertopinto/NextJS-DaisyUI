@@ -6,8 +6,8 @@ export default async function page(){
   const personas = await dataPersona();
   return (
     <div className="container mx-auto">
-      <h1 className="text-2xl">Personas con React Table</h1>
-      <ClientSideTable data={personas.personas}/>
+      <h1 className="text-2xl">React Table/DaisyUI</h1>
+      <ClientSideTable data={personas.personas} paginacion={personas.paginacion}/>
     </div>
   );
 };
