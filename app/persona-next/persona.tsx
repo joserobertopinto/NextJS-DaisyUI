@@ -1,21 +1,19 @@
 const ITEMS_PER_PAGE = 10;
 
 export default async function fetchFilteredPersonas(
-  query: string,
-  currentPage: number,
+  searchParams: string|undefined
 ) {
-  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
-  
   try {
-    // http://localhost:3001/persona-next?query[apellido]=pinto&page=200
-    // http://172.16.21.135:8056/persona/api/v1/personas?nombre=jose&apellido=pinto?nombre=jose&apellido=pinto&page=1
-    // http://172.16.21.135:8056/persona/api/v1/personas?query=[nombre=jose&apellido=pinto]&page=1
+    const url	= new URL('http://172.16.21.135:8056/persona/api/v1/personas');
+    url.searchParams.append('expand', 'documentos');
 
-    const params  = query ? '&apellido=' + query : ''; //solo para apellido
-    const page    = currentPage ? '&page='+currentPage : '';
+    Object.keys(searchParams).forEach((key) => {
+        url.searchParams.append(key, searchParams[key]);
+    });
+    // const page    = currentPage ? '&page='+currentPage : 1;
     const perPage = '&per-page='+ITEMS_PER_PAGE;
-    
-    const urlPersonas	= 'http://172.16.21.135:8056/persona/api/v1/personas?expand=documentos' + params + page + perPage;
+    // const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+    const urlPersonas	= url + perPage;
     const tokenPersonas = '69673f1c-c3b0-413e-99b7-33430115b5e6';
     
     const res = await fetch(urlPersonas,

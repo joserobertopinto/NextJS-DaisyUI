@@ -4,7 +4,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
 
-export default function Search({ placeholder }: { placeholder: string }) {
+export default function Search({ placeholder, field }: { placeholder: string, field: string}) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -12,9 +12,9 @@ export default function Search({ placeholder }: { placeholder: string }) {
 const handleSearch = useDebouncedCallback((term) => { //antirebote, agrega un delay de 500ms para enviar la peticion de busqueda
     const params = new URLSearchParams(searchParams);
     if (term) {
-      params.set('query', term);
+      params.set(field, term);
     } else {
-      params.delete('query');
+      params.delete(field);
     }
     replace(`${pathname}?${params.toString()}`);
   }, 500);
@@ -30,7 +30,7 @@ const handleSearch = useDebouncedCallback((term) => { //antirebote, agrega un de
         onChange={(e) => {
           handleSearch(e.target.value);
         }}
-        defaultValue={searchParams.get('query')?.toString()}
+        defaultValue={searchParams.get(field)?.toString()}
       />
       <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
     </div>
