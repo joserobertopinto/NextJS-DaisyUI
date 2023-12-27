@@ -10,12 +10,11 @@ export default async function fetchFilteredPersonas(
     Object.keys(searchParams).forEach((key) => {
         url.searchParams.append(key, searchParams[key]);
     });
-    // const page    = currentPage ? '&page='+currentPage : 1;
+
     const perPage = '&per-page='+ITEMS_PER_PAGE;
-    // const offset = (currentPage - 1) * ITEMS_PER_PAGE;
     const urlPersonas	= url + perPage;
     const tokenPersonas = '69673f1c-c3b0-413e-99b7-33430115b5e6';
-    
+
     const res = await fetch(urlPersonas,
     {
       method: "GET",

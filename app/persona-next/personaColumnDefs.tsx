@@ -6,7 +6,7 @@ import Search from "./search";
 
 const columnHelper = createColumnHelper<Persona>();
 
-export const personaColumnDefs = [
+export const personaColumnDefs = (dataFilterColumns:[]) => [
   columnHelper.accessor((row) => row.apellido, {
     id: "apellido",
     cell: (info) => info.getValue(),
@@ -51,11 +51,7 @@ export const personaColumnDefs = [
     header: () => 
     <>
       <span>Sexo</span>
-        <SelectSearch placeholder='todos...' field = "id_sexo" data = {[
-          {'id':'07adf729-a09a-4354-8400-c882f3b9b7e1', 'descripcion':'MASCULINO'},
-          {'id':'e9cef566-1f32-4a43-b58e-a27ef80c8aeb', 'descripcion':'FEMENINO'},
-          {'id':'ab1bd966-8be9-4aa8-882b-9379593f5a08', 'descripcion':'NO CORRESPONDE'}
-        ]}/>
+        <SelectSearch placeholder='Todos...' field = "id_sexo" data ={dataFilterColumns.sexo} />
     </>,
   }),
 ];

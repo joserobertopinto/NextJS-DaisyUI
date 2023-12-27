@@ -3,19 +3,21 @@ import { useReactTable, getCoreRowModel, flexRender } from "@tanstack/react-tabl
 import { personaColumnDefs } from "./personaColumnDefs";
 
 export default async function PersonaTable({
-  data
+  data,
+  dataFilterColumns
 }: {
   data: string;
+  dataFilterColumns: []
 }) {
-  
+
   const table = useReactTable({
-    columns: personaColumnDefs,
+    columns: personaColumnDefs(dataFilterColumns),
     data: data ?? [],
     getCoreRowModel: getCoreRowModel(),
   });
 
   const headers = table.getFlatHeaders();
-  const rows = table.getRowModel().rows;
+  const rows    = table.getRowModel().rows;
 
   return (
     <div className="overflow-x-auto h-100">
