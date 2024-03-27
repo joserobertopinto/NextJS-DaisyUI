@@ -1,6 +1,6 @@
 'use client'
 import { useReactTable, getCoreRowModel, flexRender } from "@tanstack/react-table";
-import { personaColumnDefs } from "./personaColumnDefs";
+import { personaColumnDefs } from "../app/persona-next/personaColumnDefs";
 
 export default async function PersonaTable({
   data,

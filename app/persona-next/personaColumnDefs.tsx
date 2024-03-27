@@ -1,8 +1,9 @@
 import { createColumnHelper } from "@tanstack/react-table";
 import { Persona } from "@/types/Persona";
 import { format, parse } from "date-fns";
-import SelectSearch from "./SelectSearch";
-import Search from "./search";
+import SelectSearch from "../../components/SelectSearch";
+import Search from "../../components/Search";
+import DatePickerComponent from "../../components/DatePicker";
 
 const columnHelper = createColumnHelper<Persona>();
 
@@ -34,7 +35,11 @@ export const personaColumnDefs = (dataFilterColumns:[]) => [
         return <span>{formattedDate}</span>;
       }
     },
-    header: () => <span>Fecha de Nacimiento</span>,
+    header: () => 
+    <>
+      <span>Fecha Nacimiento</span>
+        <DatePickerComponent field='fecha_nacimiento'/>
+    </>,
   }),
   columnHelper.accessor((row) => row.nro_documento, {
     id: "numero",
