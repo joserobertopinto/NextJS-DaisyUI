@@ -1,4 +1,4 @@
-import { TOKEN_PERSONAS, BASE_URL_PERSONAS } from "../config/contants";
+import { TOKEN_PERSONAS, BASE_URL_PERSONAS } from "../config/constants";
 const ITEMS_PER_PAGE = 10;
 
 export default async function fetchFilteredPersonas(
