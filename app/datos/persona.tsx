@@ -1,10 +1,12 @@
+import { TOKEN_PERSONAS, BASE_URL_PERSONAS } from "../config/contants";
 const ITEMS_PER_PAGE = 10;
 
 export default async function fetchFilteredPersonas(
   searchParams: string|undefined
 ) {
   try {
-    const url	= new URL('http://172.16.21.135:8056/persona/api/v1/personas');
+    const url	= new URL(BASE_URL_PERSONAS + '/api/v1/personas');
+    console.log(url);
     url.searchParams.append('expand', 'documentos');
 
     Object.keys(searchParams).forEach((key) => {
@@ -13,7 +15,7 @@ export default async function fetchFilteredPersonas(
 
     const perPage = '&per-page='+ITEMS_PER_PAGE;
     const urlPersonas	= url + perPage;
-    const tokenPersonas = '69673f1c-c3b0-413e-99b7-33430115b5e6';
+    const tokenPersonas = TOKEN_PERSONAS;
 
     const res = await fetch(urlPersonas,
     {

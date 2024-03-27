@@ -1,11 +1,12 @@
 'use client'
 
 import { Persona } from "@/types/Persona";
+import { TOKEN_PERSONAS, BASE_URL_PERSONAS } from "@/app/config/contants";
 
 async function getDataPersona(params: string) {
-    const queryParams = params ? params : '';
-    const urlPersonas	= 'http://172.16.21.135:8056/persona/api/v1/personas?expand=documentos' + queryParams;
-    const tokenPersonas = '69673f1c-c3b0-413e-99b7-33430115b5e6';
+    const queryParams   = params ? params : '';
+    const urlPersonas   = BASE_URL_PERSONAS + '/api/v1/personas?expand=documentos' + queryParams;
+    const tokenPersonas = TOKEN_PERSONAS;
     
     const res = await fetch(urlPersonas,
     {
